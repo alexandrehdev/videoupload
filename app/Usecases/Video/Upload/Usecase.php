@@ -9,7 +9,9 @@ class Usecase{
     {
         $video = new Video();
 
-        $video->file = $input->file;
+        $video->file = $input->video;
+
+        $video->thumb = $input->thumb;
 
         $video->save();
     }

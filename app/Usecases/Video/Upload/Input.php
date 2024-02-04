@@ -9,6 +9,7 @@ class Input{
      * 
      */
     public function __construct(
-        public string $file
+        public string $video,
+        public string $thumb
     ){}
 }

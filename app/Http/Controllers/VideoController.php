@@ -1,28 +1,37 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Usecases\Video\Upload\Usecase as VideoUpload;
 use App\Usecases\Video\Upload\Input as VideoUploadInput;
 use App\Http\Requests\VideoUploadRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Video;
+use App\Jobs\UploadVideo;
 
 
 class VideoController extends Controller
 {
-    public function upload(VideoUploadRequest $request, VideoUpload $videoUpload)
-    {
-        $file_path = Storage::putFile(
+    public function upload(VideoUploadRequest $request)
+    {   
+        
+        $video_path = Storage::putFile(
             'public/video-courses', 
-            $request->file('file')
+            $request->file('video')
         );
-
+        
+        $thumb_path = Storage::putFile(
+            'public/video-courses', 
+            $request->file('thumb')
+        );
+        
         $video_input = new VideoUploadInput(
-            $file_path
+            $video_path,
+            $thumb_path
         );
 
-
-        $videoUpload->execute($video_input);
+        UploadVideo::dispatch(
+            $video_input
+        )->onQueue('video_upload');
+        
 
         return back();
     }

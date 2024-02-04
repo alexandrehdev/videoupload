@@ -22,7 +22,8 @@ class VideoUploadRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'file' => 'mimetypes:video/mp4,video/mpeg,video/quicktime'
+            'video' => 'mimetypes:video/mp4,video/mpeg,video/quicktime',
+            'thumb' => 'mimes:jpg'
         ];
     }
 }
