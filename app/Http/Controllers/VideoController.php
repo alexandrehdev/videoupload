@@ -41,6 +41,6 @@ class VideoController extends Controller
     {
         $videos = Video::all();
 
-        return view('list',compact("videos"));
+        return view('pages.list',compact("videos"));
     }
 }
