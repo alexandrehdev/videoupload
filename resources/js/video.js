@@ -1,20 +1,20 @@
 import videojs from "video.js";
 
-import 'videojs-quality-selector-hls'
+import "videojs-quality-selector-hls";
 
-import 'videojs-mobile-ui';
+var options = {};
 
+var player = videojs('my-video', options, function onPlayerReady(){
 
+    player.qualitySelectorHls({
+        displayCurrentQuality: true,
+        placementIndex: 2,
+        vjsIconClass: 'vjs-icon-hd'
+    });
 
-var player = videojs('my-video');
+    videojs.log('player ready');
 
-player.mobileUi();
-
-player.dynamicWatermark();
-
-
-player.qualitySelectorHls({
-    displayCurrentQuality: false,
-    placementIndex: 2,
-    vjsIconClass: 'vjs-icon-hd'
+    this.on('ended', function() {
+        videojs.log('Awww...over so soon?!');
+    });
 });
