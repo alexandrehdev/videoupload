@@ -18,7 +18,7 @@ use App\Http\Controllers\VideoController;
 
 
 
-Route::get('/', [HomeController::class,'index'])->name('index');
+Route::get('/', [HomeController::class,'index'])->middleware('auth')->name('index');
 
 
 Route::post("/upload", [VideoController::class,'upload'])->name("upload");
@@ -30,6 +30,12 @@ Route::group(['prefix' => 'cadastro','as' => 'register.'], function(){
     Route::get('/',[RegisterController::class, 'index'])->name('show');
     Route::post('/save',[RegisterController::class, 'store'])->name('store');
 });
+
+// Route::group(['prefix' => 'login','as' => 'login.'],function(){
+    Route::get('/login', function(){
+        echo "aqui";
+    })->name('login');
+// });
 
 
 
