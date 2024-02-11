@@ -10,7 +10,8 @@
     <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
     <title>@yield('title')</title>
 </head>
-<body class="h-full w-full">
+<body class="h-full min-h-full w-full"> 
+
     @yield('content')
 
     @yield('scripts')

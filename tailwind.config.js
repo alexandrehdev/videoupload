@@ -7,6 +7,14 @@ export default {
   theme: {
     extend: {},
   },
+  fontFamily :{
+    'body' : [
+      'Roboto'
+    ],
+    'sans' : [
+      'Roboto'
+    ]
+  },
   plugins: [
     require('flowbite/plugin')
   ],

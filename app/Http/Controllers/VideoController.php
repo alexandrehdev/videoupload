@@ -10,6 +10,7 @@ use App\Jobs\UploadVideo;
 
 class VideoController extends Controller
 {
+    
     public function upload(VideoUploadRequest $request)
     {   
         
@@ -41,6 +42,6 @@ class VideoController extends Controller
     {
         $videos = Video::all();
 
-        return view('pages.list',compact("videos"));
+        return view('pages.product.show',compact("videos"));
     }
 }
