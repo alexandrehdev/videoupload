@@ -24,6 +24,17 @@ class RegisterRequest extends FormRequest
         return [
             'name' => [
                 "required",
+                function($attribute, $value, $fail) {
+                    $pattern = '/[\'\/~`\!@#\$%\^&\*\(\)_\-\+=\{\}\[\]\|;:"\<\>,\.\?\\\]/';
+
+                    if(preg_match('~[0-9]+~', $value)){
+                        $fail("Caracteres NUMÉRICOS para o NOME é inválido");
+                    }
+
+                    if(preg_match($pattern, $value)){
+                       $fail("O nome pessoal NÃO PODERÁ conter CARACTERES ESPECIAIS.");
+                    }
+                }
             ],
             'email' => [
                 "required",

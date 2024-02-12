@@ -27,6 +27,5 @@ class RegisterController extends Controller
         );
 
         return back()->with('message','Conta Cadastrada.');
-
     }
 }

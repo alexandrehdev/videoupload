@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,7 +23,16 @@ class LoginRequest extends FormRequest
     {
         return [
             'email' => ['required', 'email'],
-            'password' ['required'],
+            'password' => ['required'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [   
+            'email.required' => "O campo de email é obrigatório", 
+            'email.email' => "Email inválido",
+            'password' => 'O campo de senha é obrigatório'
         ];
     }
 }
