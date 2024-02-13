@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class LoginController extends Controller
 {
@@ -22,5 +24,16 @@ class LoginController extends Controller
         }
 
         return redirect()->route('show');
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+    
+        $request->session()->invalidate();
+    
+        $request->session()->regenerateToken();
+    
+        return redirect()->route('login');
     }
 }

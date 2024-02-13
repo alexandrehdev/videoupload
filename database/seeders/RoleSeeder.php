@@ -4,19 +4,19 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Shared\RoleType;
 
-class DatabaseSeeder extends Seeder
+
+class RoleSeeder extends Seeder
 {
-    use WithoutModelEvents;
-    
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-        $this->call([
-            AdminSeeder::class,
-            RoleSeeder::class
+        \App\Models\Role::factory()->create([
+            'type' => RoleType::ADMIN,
+            'user_id' => 1,
         ]);
     }
 }

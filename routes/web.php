@@ -35,6 +35,8 @@ Route::group(['prefix' => 'cadastro','as' => 'register.'], function(){
 Route::get('/login', [LoginController::class,'index'])->name('login');
 Route::post('/auth',[LoginController::class,'authenticate'])->name('auth');
 
+Route::post('/logout',[LoginController::class,'logout'])->name('logout');
+
 
 
 

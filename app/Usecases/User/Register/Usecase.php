@@ -14,7 +14,10 @@ class Usecase{
         $user->email = $input->email;
         $user->password = Hash::make($input->password);
 
+
         $user->save();
+
+        $user->setViewerRole();
 
     }
 }
