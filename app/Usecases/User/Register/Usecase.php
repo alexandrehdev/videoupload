@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Hash;
 
 class Usecase{
 
-    public function execute(Input $input)
+    public function execute(Input $input) :User
     {
         $user = new User();
 
@@ -19,5 +19,6 @@ class Usecase{
 
         $user->setViewerRole();
 
+        return $user;
     }
 }

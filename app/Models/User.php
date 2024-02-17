@@ -12,8 +12,10 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 use App\Shared\RoleType;
 use App\Models\Role;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class User extends Authenticatable
+
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -51,7 +53,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->role->type == RoleType::ADMIN;
+        return $this->role->type == RoleType::ADMIN->value;
     }
 
     public function setViewerRole()
@@ -62,6 +64,23 @@ class User extends Authenticatable
         $role->user_id = $this->id;
 
         $role->save();
+    }
+
+    public function hasVerifiedEmail()
+    {
+        return ! is_null($this->emailVerifiedAt);
+    }
+
+    /**
+     * Mark the given user's email as verified.
+     *
+     * @return bool
+     */
+    public function markEmailAsVerified()
+    {
+        return $this->forceFill([
+            'email_verified_at' => now(),
+        ])->save();
     }
 
     public function role() :HasOne
