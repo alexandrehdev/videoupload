@@ -20,7 +20,7 @@ class RegisterController extends Controller
     public function store(RegisterRequest $request, CreateUser $create_user)
     {
         $user = $request->validated();
-
+        
         $user = $create_user->execute(
             new UserInput(
                 $user['name'],

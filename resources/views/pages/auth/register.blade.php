@@ -23,7 +23,14 @@
       </div>
     <form class="space-y-5" action="{{ route('register.store') }}" method="POST">
       @csrf
+
       <div>
+        <div class="relative mt-2 w-full">
+          <input type="text" name="name" autocomplete="off" value="{{ old('name') }}" id="name" class="border-1 peer block w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-2.5 pb-2.5 pt-4 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0" placeholder="" />
+          <label for="name" class="absolute top-2 left-1 z-10 origin-[0] -translate-y-4 scale-75 transform cursor-text select-none bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-blue-600"> Usuario</label>
+        </div>
+      </div>
+      {{-- <div>
         <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Usuario</label>
         <div class="mt-2">
           <input id="name" value="{{ old('name') }}" name="name" type="text" placeholder="Usuario" autocomplete="off" class="block w-full rounded-md border-1  @error('name') border-red-600 focus:ring-red-600 @enderror py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6">
@@ -34,7 +41,7 @@
           </span>
         @enderror
         
-      </div>
+      </div> --}}
 
       <div>
           <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>

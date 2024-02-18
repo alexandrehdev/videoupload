@@ -1,6 +1,6 @@
 @extends('layout.principal')
 
-@section('title','Perfil')
+@section('title','VideoUpload | Perfil')
 @include("partials.header")
 @vite(['resources/js/alpine.js'])
 @section('content')

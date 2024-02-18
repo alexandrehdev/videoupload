@@ -42,6 +42,6 @@ class VideoController extends Controller
     {
         $videos = Video::all();
 
-        return view('pages.product.show',compact("videos"));
+        return view('pages.courses.show',compact("videos"));
     }
 }

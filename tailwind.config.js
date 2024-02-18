@@ -5,18 +5,15 @@ export default {
     "./node_modules/flowbite/**/*.js"
   ],
   theme: {
-    extend: {},
-  },
-  fontFamily :{
-    'body' : [
-      'Roboto'
-    ],
-    'sans' : [
-      'Roboto'
-    ]
+    extend: {
+      fontFamily :{
+        roboto: ['"Roboto Condensed"', "sans-serif"],
+      },
+    },
   },
   plugins: [
-    require('flowbite/plugin')
+    require('flowbite/plugin'),
+    require('@tailwindcss/forms'),
   ],
 }
 

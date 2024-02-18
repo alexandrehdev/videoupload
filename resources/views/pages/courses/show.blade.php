@@ -31,14 +31,13 @@
 </div> 
 @endif
 
-   {{ $videos->count() }}
     @foreach($videos as $video)
       <video
       id="my-video"
       class="video-js"
       controls
       preload="auto"
-      width="640"
+      width="490"
       height="264"
       poster="{{ Storage::url($video->thumb) }}"
       data-setup="{}"
