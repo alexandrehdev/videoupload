@@ -8,6 +8,7 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\FaqController;
+use Illuminate\Http\Request;
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
@@ -39,7 +40,18 @@ Route::group(['prefix' => 'cadastro','as' => 'register.'], function(){
 });
 
 
-Route::get('/login', [LoginController::class,'index'])->name('login');
+Route::get('/login', function(Request $request){
+    if(!$request->hasValidSignature()){
+        abort('401');
+    }
+    return view("pages.auth.login");
+})->middleware('signed')->name('login');
+
+
+Route::get('admin-login',function(){
+    return view("pages.auth.login");
+});
+
 Route::post('/auth',[LoginController::class,'authenticate'])->name('auth');
 
 Route::post('/logout',[LoginController::class,'logout'])->name('logout');
